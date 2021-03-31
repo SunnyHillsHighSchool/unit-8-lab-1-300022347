@@ -367,7 +367,28 @@ public class Picture
   }
 
    ////////////////////// methods ///////////////////////////////////////
-
+  public void mirrorTopBottom()
+  {
+    //Create 2d array of pixels
+    Pixel[][]pixels = this.getPixels2D();
+    //Create top pixel
+    Pixel top = null;
+    Pixel bottom = null; 
+    //Loop through half of rows using Loop Control Variable: r
+    for(int r=0; r<pixels.length/2;r++)
+    {
+      //Loop through columns using Loop Control Variable: c
+      for(int c=0; c<pixels[0].length;c++)
+      {
+        //Assign Top to (row,column)
+        top=pixels[r][c];
+        //Assign Bottom to (row,column+1-c)
+        bottom = pixels[pixels.length-1-r][c];
+        //Set bottom pixel colors to top pixel colors
+        bottom.setColor(top.getColor());
+      }
+    }
+  }
    
 
 
